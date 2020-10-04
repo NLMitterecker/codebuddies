@@ -1,7 +1,7 @@
 # Django 3 by example - codebuddies hangout
 
 All projects created from "Django 3 by example 3rd edition" 
-(https://www.packtpub.com/product/django-3-by-example-third-edition/9781838981952)
+(https://www.packtpub.com/product/django-3-by-example-third-edition/9781838981952).
 Every chapter is stored in its own subdirectory.
 
 ## Setup environment
@@ -30,7 +30,7 @@ $ python manage.py runserver
 
 Enter django shell
 ~~~
-$ python manage.py runserver
+$ python manage.py shell
 ~~~
 
 Synchronize new model into database
