@@ -19,6 +19,32 @@ $ . my_dev_env/bin/activate
 pip install -r requirements.txt
 ~~~
 
+## Useful django commands
+
+The django dev server is managed through **manage.py**.
+
+Run dev server
+~~~
+$ python manage.py runserver
+~~~
+
+Enter django shell
+~~~
+$ python manage.py runserver
+~~~
+
+Synchronize new model into database
+~~~
+$ python manage.py makemigrations APPLICATION_NAME
+~~~
+
+Migrate new Database schema
+~~~
+$ python manage.py migrate
+~~~
+
+$ python manage
+
 
 
 
