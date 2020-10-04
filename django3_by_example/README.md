@@ -45,6 +45,10 @@ $ python manage.py migrate
 
 $ python manage
 
+## dev admin account
 
+Username and password for admin
 
-
+~~~
+admin/admin
+~~~
