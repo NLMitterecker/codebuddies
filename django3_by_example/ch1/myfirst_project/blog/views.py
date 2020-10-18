@@ -1,6 +1,18 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from .models import Post
+from .models import Post, Comment
+from .forms import EmailPostForm, CommentForm
+
+def post_share(request, post_id):
+    post = get_object_or_404(Post, id=post_id, status='published')
+    if request.method == 'POST':
+        form = EmailPostForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+    else:
+        form = EmailPostForm()
+    return render(request, 'blog/post/share.html', {'post': post,
+                                                    'form': form})
 
 def post_list(request):
     object_list = Post.published.all()
@@ -25,6 +37,22 @@ def post_details(request, year, month, day, post):
                                    publish__month=month,
                                    publish__day=day)
 
+    comments = post.comments.filter(active=True)
+
+    new_comment = None
+
+    if request.method == 'POST':
+        comment_form = CommentForm(data=request.POST)
+        if  comment_form.is_valid():
+            new_comment = comment_form.save(commit=False)
+            new_comment.post = post
+            new_comment.save()
+    else:
+        comment_form = CommentForm()
+
     return render(request,
                  'blog/post/detail.html',
-                 {'post': post})
+                 {  'post': post,
+                    'comments': comments,
+                    'new_comment': new_comment,
+                    'comment_form': comment_form})
