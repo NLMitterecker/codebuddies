@@ -1,1 +1,1 @@
-# chapter 1 - Building a Blog Application
+# chapter 1 to 3 - Building a Blog Application
